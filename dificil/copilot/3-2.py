@@ -17,11 +17,13 @@ class Solution:
             elif c == ')':
                 stack.append(num * sign)
                 num = 0
+                total = 0
                 while stack and isinstance(stack[-1], int):
-                    num += stack.pop()
+                    total += stack.pop()
                 if stack:
                     sign = stack.pop()
-                    stack.append(num * sign)
+                    stack.append(total * sign)
                     num = 0
 
+        stack.append(num * sign)
         return sum(stack)

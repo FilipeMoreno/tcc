@@ -18,7 +18,7 @@ class Solution:
 
             if maxLeftX <= minRightY and maxLeftY <= minRightX:
                 if (x + y) % 2 == 0:
-                    return max(maxLeftX, maxLeftY), min(minRightX, minRightY)
+                    return (max(maxLeftX, maxLeftY) + min(minRightX, minRightY)) / 2
                 else:
                     return max(maxLeftX, maxLeftY)
 
