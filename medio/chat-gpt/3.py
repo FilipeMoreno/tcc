@@ -1,24 +1,22 @@
-class Solution(object):
-    def twoSum(self, nums, target):
-        """
-        :type nums: List[int]
-        :type target: int
-        :rtype: List[int]
-        """
-        # Create a dictionary to store the complement of each number
-        seen = {}
+class Solution:
+    def reverse(self, x: int) -> int:
+        INT_MAX = 2**31 - 1
+        INT_MIN = -2**31
 
-        for i, num in enumerate(nums):
-            # Calculate the complement for the current number
-            complement = target - num
+        # Handle negative sign
+        sign = 1 if x >= 0 else -1
+        x = abs(x)
 
-            # Check if the complement is in the dictionary
-            if complement in seen:
-                # If found, return the indices of the two numbers
-                return [seen[complement], i]
-            
-            # If not found, add the current number and its index to the dictionary
-            seen[num] = i
+        # Reverse the digits
+        reversed_x = 0
+        while x != 0:
+            digit = x % 10
+            x //= 10
 
-        # If no solution is found, return an empty list
-        return []
+            # Check for overflow
+            if reversed_x > (INT_MAX - digit) // 10:
+                return 0
+
+            reversed_x = reversed_x * 10 + digit
+
+        return sign * reversed_x
